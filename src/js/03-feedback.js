@@ -1,16 +1,16 @@
 const throttle = require('lodash.throttle');
 
 const formEl = document.querySelector('.feedback-form');
-const FEEDBACK_FORM = 'feedback-form-state';
+const FEEDBACK_FORM = FEEDBACK_FORM;
 
 const objForm = {
   email: '',
   message: '',
 };
 
-const objFromLS = JSON.parse(localStorage.getItem('feedback-form-state'));
+const objFromLS = JSON.parse(localStorage.getItem(FEEDBACK_FORM));
 
-if (localStorage.getItem('feedback-form-state')) {
+if (localStorage.getItem(FEEDBACK_FORM)) {
   formEl.elements.email.value = objFromLS.email;
 
   formEl.elements.message.value = objFromLS.message;
@@ -23,7 +23,7 @@ function setObjectFormOnLS(e) {
   objForm.message = formEl.elements.message.value;
   objForm[e.target.name] = e.target.value;
 
-  localStorage.setItem('feedback-form-state', JSON.stringify(objForm));
+  localStorage.setItem(FEEDBACK_FORM, JSON.stringify(objForm));
 }
 
 formEl.addEventListener('submit', e => {
